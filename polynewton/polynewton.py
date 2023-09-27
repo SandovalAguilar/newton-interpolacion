@@ -1,7 +1,9 @@
 import numpy as np
 
 def calculate_differences(x_vector, y_vector):
-    pass
+    size = y_vector.size
+    coefficients = np.zeros((size, size))
+
 
 def generate_interpolation(coefficients, x_vector, x):
     pass
