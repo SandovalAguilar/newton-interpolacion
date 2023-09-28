@@ -44,9 +44,9 @@ def fill_vector(number_points):
 
     return temp_vector
 
-# Print plot
+# Generate plot
 def draw_plot(newton_poly):
-    plt.figure(figsize = (12, 8))
+    plt.figure(figsize = (9, 5))
     plt.plot(newton_poly.x_vector, newton_poly.y_vector, 'bo')
     plt.plot(newton_poly.x_values, newton_poly.evaluated_polynomial)
     plt.savefig("polynewton_plot")
