@@ -11,7 +11,8 @@ class PolyNewton:
         self.evaluated_polynomial = self.evaluate_interpolation()
 
     def calculate_x_values(self):
-        self.x_values = np.arange(min(self.x_vector), max(self.x_vector) + 0.1, 0.1)
+        self.x_values = np.arange(
+            min(self.x_vector), max(self.x_vector) + 0.1, 0.1)
 
         return self.x_values
 
