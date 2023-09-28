@@ -1,8 +1,10 @@
 import numpy as np
+import matplotlib.pyplot as plt
+from pathlib import Path
 import os
 
 # Custom modules
-from method.polynewton_method import PolyNewton as pl
+import polynewton_method as pm
 
 # Numerical validation
 def verify_int_input():
@@ -43,8 +45,11 @@ def fill_vector(number_points):
     return temp_vector
 
 # Print plot
-def draw_plot():
-    pass
+def draw_plot(newton_poly):
+    plt.figure(figsize = (12, 8))
+    plt.plot(newton_poly.x_vector, newton_poly.y_vector, 'bo')
+    plt.plot(newton_poly.x_values, newton_poly.evaluated_polynomial)
+    plt.savefig("polynewton_plot")
 
 # CLI menu
 def menu():
@@ -65,14 +70,17 @@ def menu():
         
         print("Ingrese el vector Y:")
         y_vector = fill_vector(nodes)
-
-        print("Ingrese los valores de X para evaluar el polinomio:")
-        x_values = fill_vector(nodes)
-
-        newton_poly = pl.PolyNewton(x_vector, y_vector, nodes, x_values)
+        
+        newton_poly = pm.PolyNewton(x_vector, y_vector, nodes)
 
         print("Las diferencias divididas son:")
         print(newton_poly.calculate_coefficients())
+
+        print("Los puntos evaluados son:")
+        print(newton_poly.evaluate_interpolation())
+
+        print("Grafico creado satisfactoriamente en la carpeta raiz.")
+        draw_plot(newton_poly)
 
         print("¿Desea ingresar otro conjunto de nodos? [S/N]:")
         opcion = input()
